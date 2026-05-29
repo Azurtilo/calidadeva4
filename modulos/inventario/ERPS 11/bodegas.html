@@ -4,143 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ERP Seguridad LTDA — Gestión de Bodegas</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f0f2f5; color: #333; }
-
-    header {
-      background: #1a1a2e;
-      color: white;
-      padding: 16px 32px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    header h1 { font-size: 20px; }
-    header span { background: #e94560; padding: 4px 10px; border-radius: 4px; font-size: 12px; }
-
-    .container { max-width: 1100px; margin: 32px auto; padding: 0 16px; }
-
-    .card {
-      background: white;
-      border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .card h2 {
-      font-size: 16px;
-      margin-bottom: 16px;
-      color: #1a1a2e;
-      border-bottom: 2px solid #e94560;
-      padding-bottom: 8px;
-    }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-    .form-group { display: flex; flex-direction: column; gap: 4px; }
-    .form-group label { font-size: 13px; font-weight: bold; color: #555; }
-    .form-group input, .form-group select {
-      padding: 8px 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: #e94560; }
-
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: bold;
-      margin-top: 16px;
-      margin-right: 8px;
-    }
-    .btn-primary { background: #e94560; color: white; }
-    .btn-primary:hover { background: #c73652; }
-    .btn-secondary { background: #1a1a2e; color: white; }
-    .btn-secondary:hover { background: #2d2d4e; }
-    .btn-success { background: #28a745; color: white; }
-    .btn-danger { background: #dc3545; color: white; }
-    .btn-sm { padding: 5px 10px; font-size: 12px; margin-top: 0; margin-right: 4px; }
-
-    .alert {
-      padding: 10px 16px;
-      border-radius: 6px;
-      margin-top: 12px;
-      font-size: 14px;
-      display: none;
-    }
-    .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-    .alert-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    thead { background: #1a1a2e; color: white; }
-    thead th { padding: 10px 14px; text-align: left; }
-    tbody tr:nth-child(even) { background: #f8f9fa; }
-    tbody td { padding: 10px 14px; border-bottom: 1px solid #eee; vertical-align: middle; }
-
-    .badge { padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; }
-    .badge-entrada { background: #d4edda; color: #155724; }
-    .badge-salida { background: #f8d7da; color: #721c24; }
-
-    .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
-    .tab {
-      padding: 8px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: bold;
-      border: 2px solid #ddd;
-      background: white;
-      color: #555;
-    }
-    .tab.active { background: #1a1a2e; color: white; border-color: #1a1a2e; }
-
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-
-    /* Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 100;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal {
-      background: white;
-      border-radius: 8px;
-      padding: 28px;
-      width: 420px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    }
-    .modal h3 { margin-bottom: 16px; color: #1a1a2e; border-bottom: 2px solid #e94560; padding-bottom: 8px; }
-    .modal-info { background: #f8f9fa; border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 14px; }
-    .modal-info span { font-weight: bold; color: #e94560; }
-    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
-    .btn-cancel { background: #6c757d; color: white; margin-top: 0; }
-
-    .reporte-box {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 8px;
-    }
-    .reporte-box h4 { color: #1a1a2e; margin-bottom: 12px; }
-    .stock-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 14px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -176,14 +40,12 @@
   <!-- MOVIMIENTOS Y REPORTE -->
   <div class="card">
     <h2>📦 Movimientos y Reportes</h2>
-
     <div class="tabs">
       <div class="tab active" onclick="cambiarTab('tabMovimiento')">📥 Registrar Movimiento</div>
       <div class="tab" onclick="cambiarTab('tabReporte')">📊 Reporte por Bodega</div>
       <div class="tab" onclick="cambiarTab('tabHistorial')">📋 Historial</div>
     </div>
 
-    <!-- TAB MOVIMIENTO -->
     <div class="tab-content active" id="tabMovimiento">
       <div class="form-grid">
         <div class="form-group">
@@ -207,7 +69,6 @@
       <div class="alert alert-error" id="alertMovError"></div>
     </div>
 
-    <!-- TAB REPORTE -->
     <div class="tab-content" id="tabReporte">
       <div style="display:flex; gap:12px; align-items:flex-end;">
         <div class="form-group" style="flex:1">
@@ -221,7 +82,6 @@
       <div id="reporteContenido"></div>
     </div>
 
-    <!-- TAB HISTORIAL -->
     <div class="tab-content" id="tabHistorial">
       <div style="display:flex; gap:12px; align-items:flex-end; margin-bottom:16px;">
         <div class="form-group" style="flex:1">
@@ -248,7 +108,7 @@
     </div>
   </div>
 
-  <!-- LISTA DE BODEGAS -->
+  <!-- LISTA BODEGAS -->
   <div class="card">
     <h2>🏭 Bodegas Registradas</h2>
     <table>
@@ -269,172 +129,6 @@
 
 </div>
 
-<script>
-  // Datos en memoria
-  let bodegas = [];
-
-  // Crear bodega
-  function crearBodega() {
-    const id = document.getElementById('bodegaId').value.trim();
-    const nombre = document.getElementById('bodegaNombre').value.trim();
-    const ubicacion = document.getElementById('bodegaUbicacion').value.trim();
-
-    if (!id || !nombre || !ubicacion) {
-      mostrarError('alertError', 'ID, nombre y ubicación son obligatorios.');
-      return;
-    }
-    if (bodegas.find(b => b.id === id)) {
-      mostrarError('alertError', `Ya existe una bodega con el ID ${id}.`);
-      return;
-    }
-
-    bodegas.push({ id, nombre, ubicacion, stock: {}, movimientos: [] });
-    mostrarExito('alertSuccess', `✅ Bodega "${nombre}" creada correctamente.`);
-    document.getElementById('bodegaId').value = '';
-    document.getElementById('bodegaNombre').value = '';
-    document.getElementById('bodegaUbicacion').value = '';
-    actualizarSelectores();
-    renderBodegas();
-  }
-
-  // Registrar movimiento
-  function registrarMovimiento(tipo) {
-    const idBodega = document.getElementById('movBodega').value;
-    const codigoProducto = document.getElementById('movProducto').value.trim();
-    const cantidad = parseInt(document.getElementById('movCantidad').value);
-
-    if (!idBodega || !codigoProducto || !cantidad || cantidad <= 0) {
-      mostrarError('alertMovError', 'Completa todos los campos correctamente.');
-      return;
-    }
-
-    const bodega = bodegas.find(b => b.id === idBodega);
-
-    if (tipo === 'SALIDA') {
-      const stockActual = bodega.stock[codigoProducto] || 0;
-      if (cantidad > stockActual) {
-        mostrarError('alertMovError', `Stock insuficiente. Disponible: ${stockActual} unidades.`);
-        return;
-      }
-      bodega.stock[codigoProducto] = stockActual - cantidad;
-    } else {
-      bodega.stock[codigoProducto] = (bodega.stock[codigoProducto] || 0) + cantidad;
-    }
-
-    bodega.movimientos.push({
-      tipo,
-      codigoProducto,
-      cantidad,
-      fecha: new Date().toLocaleString('es-CL')
-    });
-
-    const elMov = document.getElementById('alertMov');
-    elMov.className = 'alert alert-success';
-    elMov.style.display = 'block';
-    elMov.textContent = `✅ ${tipo} registrada: ${cantidad} unidad(es) de "${codigoProducto}" en bodega ${idBodega}. Stock actual: ${bodega.stock[codigoProducto]}`;
-    document.getElementById('alertMovError').style.display = 'none';
-    document.getElementById('movProducto').value = '';
-    document.getElementById('movCantidad').value = '';
-    renderBodegas();
-    setTimeout(() => elMov.style.display = 'none', 4000);
-  }
-
-  // Ver reporte
-  function verReporte() {
-    const id = document.getElementById('reporteBodega').value;
-    if (!id) return;
-    const bodega = bodegas.find(b => b.id === id);
-    const contenido = document.getElementById('reporteContenido');
-    const productos = Object.entries(bodega.stock);
-
-    if (productos.length === 0) {
-      contenido.innerHTML = '<div class="reporte-box"><p style="color:#999">No hay stock registrado en esta bodega.</p></div>';
-      return;
-    }
-
-    contenido.innerHTML = `
-      <div class="reporte-box">
-        <h4>📊 Reporte de Stock — ${bodega.nombre} (${bodega.ubicacion})</h4>
-        ${productos.map(([codigo, cantidad]) => `
-          <div class="stock-item">
-            <span><strong>${codigo}</strong></span>
-            <span>${cantidad} unidades</span>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  // Ver historial
-  function verHistorial() {
-    const id = document.getElementById('historialBodega').value;
-    if (!id) return;
-    const bodega = bodegas.find(b => b.id === id);
-    const tbody = document.getElementById('tablaHistorial');
-
-    if (bodega.movimientos.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#999;padding:20px">No hay movimientos registrados</td></tr>';
-      return;
-    }
-
-    tbody.innerHTML = [...bodega.movimientos].reverse().map(m => `
-      <tr>
-        <td><span class="badge ${m.tipo === 'ENTRADA' ? 'badge-entrada' : 'badge-salida'}">${m.tipo === 'ENTRADA' ? '📥' : '📤'} ${m.tipo}</span></td>
-        <td>${m.codigoProducto}</td>
-        <td>${m.cantidad}</td>
-        <td>${m.fecha}</td>
-      </tr>
-    `).join('');
-  }
-
-  // Render tabla bodegas
-  function renderBodegas() {
-    const tbody = document.getElementById('tablaBodegas');
-    if (bodegas.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#999;padding:20px">No hay bodegas registradas aún</td></tr>';
-      return;
-    }
-    tbody.innerHTML = bodegas.map(b => `
-      <tr>
-        <td><strong>${b.id}</strong></td>
-        <td>${b.nombre}</td>
-        <td>${b.ubicacion}</td>
-        <td>${Object.keys(b.stock).length} producto(s)</td>
-        <td>${b.movimientos.length} movimiento(s)</td>
-      </tr>
-    `).join('');
-  }
-
-  // Actualizar selectores
-  function actualizarSelectores() {
-    const opciones = bodegas.map(b => `<option value="${b.id}">${b.nombre} (${b.id})</option>`).join('');
-    ['movBodega', 'reporteBodega', 'historialBodega'].forEach(id => {
-      const sel = document.getElementById(id);
-      sel.innerHTML = '<option value="">— Seleccionar bodega —</option>' + opciones;
-    });
-  }
-
-  // Cambiar tab
-  function cambiarTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    event.target.classList.add('active');
-  }
-
-  function mostrarExito(id, msg) {
-    const el = document.getElementById(id);
-    el.textContent = msg;
-    el.style.display = 'block';
-    setTimeout(() => el.style.display = 'none', 4000);
-  }
-
-  function mostrarError(id, msg) {
-    const el = document.getElementById(id);
-    el.textContent = msg;
-    el.style.display = 'block';
-  }
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
