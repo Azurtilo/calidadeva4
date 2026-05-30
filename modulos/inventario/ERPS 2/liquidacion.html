@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP Seguridad LTDA — Liquidación de Sueldo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🏢 ERP Seguridad LTDA</h1>
+  <span>Módulo RRHH — Cálculo Paramétrico</span>
+</header>
+
+<div class="container">
+
+  <!-- DATOS DEL EMPLEADO -->
+  <div class="card">
+    <h2>👤 Datos del Empleado</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>ID Empleado *</label>
+        <input type="text" id="empleadoId" placeholder="Ej: EMP-001">
+      </div>
+      <div class="form-group">
+        <label>Nombre Completo *</label>
+        <input type="text" id="nombreEmpleado" placeholder="Ej: Juan Pérez">
+      </div>
+      <div class="form-group" style="grid-column: span 2">
+        <label>Sueldo Base ($) *</label>
+        <input type="number" id="sueldoBase" placeholder="Ej: 700000" min="0">
+      </div>
+    </div>
+    <div class="alert alert-error" id="alertError"></div>
+  </div>
+
+  <!-- HABERES -->
+  <div class="card">
+    <h2>💰 Haberes Adicionales</h2>
+    <div id="haberesContainer"></div>
+    <button class="btn btn-secondary" onclick="agregarHaber()">➕ Agregar Haber</button>
+  </div>
+
+  <!-- DESCUENTOS -->
+  <div class="card">
+    <h2>📉 Descuentos</h2>
+    <div id="descuentosContainer"></div>
+    <button class="btn btn-secondary" onclick="agregarDescuento()">➕ Agregar Descuento</button>
+  </div>
+
+  <!-- BOTONES -->
+  <div style="margin-bottom: 24px;">
+    <button class="btn btn-primary" onclick="calcularLiquidacion()">⚙️ Calcular Liquidación</button>
+    <button class="btn btn-secondary" onclick="limpiarFormulario()">🗑️ Limpiar</button>
+  </div>
+
+  <!-- RESULTADO -->
+  <div class="card resultado-box" id="resultadoBox">
+    <h3>📄 Resultado de la Liquidación</h3>
+    <div class="resultado-grid">
+      <div class="resultado-item">
+        <label>Sueldo Base</label>
+        <span id="resSueldoBase">$0</span>
+      </div>
+      <div class="resultado-item positivo">
+        <label>Total Haberes</label>
+        <span id="resTotalHaberes">$0</span>
+      </div>
+      <div class="resultado-item">
+        <label>Base Imponible</label>
+        <span id="resBaseImponible">$0</span>
+      </div>
+      <div class="resultado-item negativo">
+        <label>Total Descuentos</label>
+        <span id="resTotalDescuentos">$0</span>
+      </div>
+      <div class="resultado-item total" style="grid-column: span 2">
+        <label>💵 Sueldo Líquido</label>
+        <span id="resSueldoLiquido">$0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div class="card">
+    <h2>📋 Historial de Liquidaciones</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Mes</th>
+          <th>Base Imponible</th>
+          <th>Descuentos</th>
+          <th>Sueldo Líquido</th>
+        </tr>
+      </thead>
+      <tbody id="tablaHistorial">
+        <tr><td colspan="6" class="historial-vacio">No hay liquidaciones generadas aún</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
