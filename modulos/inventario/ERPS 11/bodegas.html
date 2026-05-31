@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP Seguridad LTDA — Gestión de Bodegas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Barra de retorno al inicio -->
+  <nav style="background:#1a1d27;border-bottom:1px solid #2e3248;padding:0.6rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+    <a href="../../../index.html" style="color:#8b91a8;text-decoration:none;font-size:0.85rem;display:flex;align-items:center;gap:0.4rem;" onmouseover="this.style.color='#e8eaf0'" onmouseout="this.style.color='#8b91a8'">
+      ← Inicio
+    </a>
+    <span style="color:#2e3248">|</span>
+    <span style="color:#e8eaf0;font-size:0.85rem;font-weight:500;">🔒 Seguridad LTDA</span>
+  </nav>
+
+
+<header>
+  <h1>🏢 ERP Seguridad LTDA</h1>
+  <span>Módulo Inventario — Gestión de Bodegas</span>
+</header>
+
+<div class="container">
+
+  <!-- CREAR BODEGA -->
+  <div class="card">
+    <h2>🏭 Crear Nueva Bodega</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>ID de Bodega *</label>
+        <input type="text" id="bodegaId" placeholder="Ej: BOD-001">
+      </div>
+      <div class="form-group">
+        <label>Nombre *</label>
+        <input type="text" id="bodegaNombre" placeholder="Ej: Bodega Central">
+      </div>
+      <div class="form-group">
+        <label>Ubicación *</label>
+        <input type="text" id="bodegaUbicacion" placeholder="Ej: Santiago, Piso 1">
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="crearBodega()">➕ Crear Bodega</button>
+    <div class="alert alert-success" id="alertSuccess"></div>
+    <div class="alert alert-error" id="alertError"></div>
+  </div>
+
+  <!-- MOVIMIENTOS Y REPORTE -->
+  <div class="card">
+    <h2>📦 Movimientos y Reportes</h2>
+    <div class="tabs">
+      <div class="tab active" onclick="cambiarTab('tabMovimiento')">📥 Registrar Movimiento</div>
+      <div class="tab" onclick="cambiarTab('tabReporte')">📊 Reporte por Bodega</div>
+      <div class="tab" onclick="cambiarTab('tabHistorial')">📋 Historial</div>
+    </div>
+
+    <div class="tab-content active" id="tabMovimiento">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Bodega *</label>
+          <select id="movBodega">
+            <option value="">— Seleccionar bodega —</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Código Producto *</label>
+          <input type="text" id="movProducto" placeholder="Ej: PROD-001">
+        </div>
+        <div class="form-group">
+          <label>Cantidad *</label>
+          <input type="number" id="movCantidad" placeholder="0" min="1">
+        </div>
+      </div>
+      <button class="btn btn-success" onclick="registrarMovimiento('ENTRADA')">📥 Registrar Entrada</button>
+      <button class="btn btn-danger" onclick="registrarMovimiento('SALIDA')">📤 Registrar Salida</button>
+      <div class="alert alert-success" id="alertMov"></div>
+      <div class="alert alert-error" id="alertMovError"></div>
+    </div>
+
+    <div class="tab-content" id="tabReporte">
+      <div style="display:flex; gap:12px; align-items:flex-end;">
+        <div class="form-group" style="flex:1">
+          <label>Seleccionar Bodega</label>
+          <select id="reporteBodega">
+            <option value="">— Seleccionar bodega —</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary" onclick="verReporte()" style="margin-top:0">📊 Ver Reporte</button>
+      </div>
+      <div id="reporteContenido"></div>
+    </div>
+
+    <div class="tab-content" id="tabHistorial">
+      <div style="display:flex; gap:12px; align-items:flex-end; margin-bottom:16px;">
+        <div class="form-group" style="flex:1">
+          <label>Seleccionar Bodega</label>
+          <select id="historialBodega">
+            <option value="">— Seleccionar bodega —</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary" onclick="verHistorial()" style="margin-top:0">📋 Ver Historial</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tablaHistorial">
+          <tr><td colspan="4" style="text-align:center;color:#999;padding:20px">Selecciona una bodega para ver el historial</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LISTA BODEGAS -->
+  <div class="card">
+    <h2>🏭 Bodegas Registradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Ubicación</th>
+          <th>Productos con Stock</th>
+          <th>Total Movimientos</th>
+        </tr>
+      </thead>
+      <tbody id="tablaBodegas">
+        <tr><td colspan="5" style="text-align:center;color:#999;padding:20px">No hay bodegas registradas aún</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
